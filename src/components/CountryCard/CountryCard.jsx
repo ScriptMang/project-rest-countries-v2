@@ -1,5 +1,3 @@
-import CountryCard from './components/CountryCard/CountryCard'
-import './App.css'
 
 // const countryCardProps = {
 //     flagUrl: "",
@@ -15,15 +13,12 @@ import './App.css'
 
 // }
 
-
-
-function App() {
-
-  return (
+// a react component that represent a country card
+function CountryCard() {
+    return (
     <>
-    <CountryCard />
+     <p>CountryCard</p>
     </>
-  )
+    )
 }
-
-export default App
+export default CountryCard
