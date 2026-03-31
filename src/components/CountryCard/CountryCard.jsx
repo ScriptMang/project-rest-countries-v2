@@ -14,16 +14,28 @@
 // }
 
 // a react component that represent a country card
-function CountryCard(
-    { flagUrl, commonName, nativeName,
-      population, region, subRegion, capital,
-      topLevelDomain, currencies, languages
-    }) {
-    console.log("The common name of this country is: ", commonName);
+function CountryCards({countries}) {
+    let cardCount = 1
+    const cards = countries.map(elem => {
+     return ( <li key={String(cardCount)} className="countryCard" data-id={String(cardCount++)}>
+        <img src={elem['flagUrl']} alt={ elem['commonName'] + "'s flag"} />
+        <div className="countryDetails">
+            <div className="countryName">
+                {elem['commonName']}
+            </div>
+            <div className="countryInfo">
+                <div className="countryVal"><span>Population: </span>{elem['population']}</div>
+                <div className="countryVal"><span>Region: </span>{elem['region']}</div>
+                <div className="countryVal"><span>Capital: </span>{elem['capital']}</div>
+            </div>
+        </div>
+      </li>
+    )})
+    
     return (
-    <>
-     <p>CountryCard</p>
-    </>
+    <ul id="countryListContainer">
+       {cards}
+    </ul>
     )
 }
-export default CountryCard
+export default CountryCards

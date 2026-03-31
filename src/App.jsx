@@ -1,4 +1,4 @@
-import CountryCard from './components/CountryCard/CountryCard'
+import CountryCards from './components/CountryCard/CountryCard'
 import {useState, useEffect} from 'react'
 import './App.css'
 
@@ -40,20 +40,10 @@ fetchCountries()
 },[])
 
 
-console.log("How many countries are there: ", fetchCountries.length)
+console.log("How many countries are there: ", fetchCountries.length)    
   return (
     <>
-    <CountryCard 
-      flagUrl={country.flagUrl}
-      commonName={country.commonName}
-      nativeName={country.nativeName}
-      population={country.population}
-      region={country.region}
-      subRegion={country.subRegion}
-      capital={country.capital}
-      topLevelDomain={country.topLevelDomain}
-      currencies={country.currencies}
-      languages={country.languages}/>
+    <CountryCards countries={fetchCountries}/>
     </>
   )
 }
