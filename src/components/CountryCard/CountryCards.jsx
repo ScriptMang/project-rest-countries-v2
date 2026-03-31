@@ -17,7 +17,8 @@
 function CountryCards({countries}) {
     let cardCount = 1
     const cards = countries.map(elem => {
-     return ( <li key={String(cardCount)} className="countryCard" data-id={String(cardCount++)}>
+     return ( 
+     <li key={String(cardCount)} className="countryCard" data-id={String(cardCount++)}>
         <img src={elem['flags']['svg']} alt={ elem['name']['common'] + "'s flag"} />
         <div className="countryDetails">
             <div className="countryName">
