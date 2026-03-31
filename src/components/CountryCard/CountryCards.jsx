@@ -18,10 +18,10 @@ function CountryCards({countries}) {
     let cardCount = 1
     const cards = countries.map(elem => {
      return ( <li key={String(cardCount)} className="countryCard" data-id={String(cardCount++)}>
-        <img src={elem['flagUrl']} alt={ elem['commonName'] + "'s flag"} />
+        <img src={elem['flags']['svg']} alt={ elem['name']['common'] + "'s flag"} />
         <div className="countryDetails">
             <div className="countryName">
-                {elem['commonName']}
+                {elem['name']['common']}
             </div>
             <div className="countryInfo">
                 <div className="countryVal"><span>Population: </span>{elem['population']}</div>
