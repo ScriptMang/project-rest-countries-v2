@@ -1,3 +1,4 @@
+import TitleBar from './components/TitleBar/TitleBar'
 import CountryCards from './components/CountryCard/CountryCards'
 import {useState, useEffect} from 'react'
 import './App.css'
@@ -44,6 +45,8 @@ fetchCountries()
 console.log("How many countries are there: ", fetchCountries.length)    
   return (
     <>
+    <TitleBar />
+    <hr />
     <CountryCards countries={fetchCountries}/>
     </>
   )
