@@ -8,7 +8,7 @@ function useFetchCountries(setFetchCountries) {
             if (!resp.ok) {
                 throw new Error("response failed")
             }
-            // const jsonData = await resp.json();
+            const jsonData = await resp.json();
             // console.log(jsonData);
             setFetchCountries(jsonData);
         } catch(err) {
