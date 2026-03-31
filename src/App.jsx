@@ -1,3 +1,4 @@
+import useFetchCountries from './api.js'
 import TitleBar from './components/TitleBar/TitleBar'
 import SearchCountries from './components/SearchCountries/SearchCountries'
 import CountryCards from './components/CountryCard/CountryCards'
@@ -25,31 +26,11 @@ const [country, setCountry] = useState(countryCardProps);
 const [fetchCountries, setFetchCountries] = useState([]);
 
 // fetch all countries 1ce
-useEffect(()=> {
-const fetchCountries= async() => {
-  try {
-    const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,language')
-    if (!resp.ok) {
-      throw new Error("response failed")
-    }
-    const jsonData = await resp.json();
-    console.log(jsonData);
-    setFetchCountries(jsonData);
-  } catch(err) {
-    console.error("Fetch error: ", err)
-  }
-}
-fetchCountries()
-},[])
-
+useFetchCountries(setFetchCountries);
 
 const searchFieldHandler = (tgtCountry) =>{
   console.log("The current text in the input field is: ", tgtCountry)
 }
-
-
-
-
 
 console.log("How many countries are there: ", fetchCountries.length)    
   return (
