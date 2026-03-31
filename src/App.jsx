@@ -1,5 +1,5 @@
 import CountryCard from './components/CountryCard/CountryCard'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css'
 
 const countryCardProps = {
@@ -20,12 +20,27 @@ const countryCardProps = {
 
 function App() {
 const [country, setCountry] = useState(countryCardProps);
+const [fetchCountries, setFetchCountries] = useState([]);
 
-// setCountry(prevCountry =>  ({
-//   ...prevCountry, 
-//   commonName: "dog"
-// }));
+// fetch all countries 1ce
+useEffect(()=> {
+const fetchCountries= async() => {
+  try {
+    const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,language')
+    if (!resp.ok) {
+      throw new Error("response failed")
+    }
+    const jsonData = await resp.json();
+    setFetchCountries(jsonData);
+  } catch(err) {
+    console.error("Fetch error: ", err)
+  }
+}
+fetchCountries()
+},[])
 
+
+console.log("How many countries are there: ", fetchCountries.length)
   return (
     <>
     <CountryCard 

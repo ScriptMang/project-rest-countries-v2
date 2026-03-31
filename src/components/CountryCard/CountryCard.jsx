@@ -19,7 +19,7 @@ function CountryCard(
       population, region, subRegion, capital,
       topLevelDomain, currencies, languages
     }) {
-        console.log("The common name of this country is: ", commonName);
+    console.log("The common name of this country is: ", commonName);
     return (
     <>
      <p>CountryCard</p>
