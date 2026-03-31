@@ -43,12 +43,20 @@ fetchCountries()
 },[])
 
 
+const searchFieldHandler = (tgtCountry) =>{
+  console.log("The current text in the input field is: ", tgtCountry)
+}
+
+
+
+
+
 console.log("How many countries are there: ", fetchCountries.length)    
   return (
     <>
     <TitleBar />
     <hr />
-    <SearchCountries />
+    <SearchCountries  onSearchChange={searchFieldHandler}/>
     <CountryCards countries={fetchCountries}/>
     </>
   )
