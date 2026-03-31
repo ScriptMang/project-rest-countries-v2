@@ -7,6 +7,15 @@ function SearchCountries(){
             <img src={searchIconLight} id= "searchIcon" alt=" light mode magnifying glass" />
             <input type="text" id="countryInput" placeholder="Search for a country..." />
         </div>
+
+        <select name="filterByRegion" id="filterByRegionSelect">
+              <option value="Label">Filter by Region</option>
+              <option value="Africa">Africa</option>
+              <option value="Americas">Americas</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
+        </select>
     </div>
     )
 }
