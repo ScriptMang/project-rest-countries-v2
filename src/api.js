@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 
-function useFetchCountries(setFetchCountries) {
+export function useFetchCountries(setFetchCountries) {
     useEffect(()=> {
         async function fetchCountries(setFetchCountries) {
         try {
@@ -18,4 +18,3 @@ function useFetchCountries(setFetchCountries) {
         fetchCountries(setFetchCountries)
     }, [])
 }
-export default useFetchCountries

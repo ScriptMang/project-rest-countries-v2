@@ -1,8 +1,8 @@
-import useFetchCountries from './api.js'
+import {useFetchCountries} from './api.js'
 import TitleBar from './components/TitleBar/TitleBar'
 import SearchCountries from './components/SearchCountries/SearchCountries'
 import CountryCards from './components/CountryCard/CountryCards'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import './App.css'
 
 const countryCardProps = {
@@ -18,8 +18,6 @@ const countryCardProps = {
     languages: []  // string_arr
 
 }
-
-
 
 function App() {
 const [country, setCountry] = useState(countryCardProps);
