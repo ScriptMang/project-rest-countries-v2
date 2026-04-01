@@ -5,38 +5,26 @@ import CountryCards from './components/CountryCard/CountryCards'
 import {useState} from 'react'
 import './App.css'
 
-const countryCardProps = {
-    flagUrl: "",
-    commonName: "dog",
-    nativeName: "",
-    population: 0,
-    region: "",
-    subRegion: "", 
-    capital: "",
-    topLevelDomain: "",
-    currencies: [], // string_arr
-    languages: []  // string_arr
-
-}
-
 function App() {
-const [country, setCountry] = useState(countryCardProps);
-const [fetchCountries, setFetchCountries] = useState([]);
+const [url, setURL] = useState('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,language')
+const {data} = useFetchCountries(url)
 
 // fetch all countries 1ce
-useFetchCountries(setFetchCountries);
-
-const searchFieldHandler = (tgtCountry) =>{
-  console.log("The current text in the input field is: ", tgtCountry)
+const searchFieldHandler = (strVal) =>{
+    if (strVal === "") {
+          setURL('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,language');
+    } else {
+      const tgtCountry = strVal;
+      setURL(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages`);
+    }
 }
-
-console.log("How many countries are there: ", fetchCountries.length)    
+// console.log("How many countries are there: ", data.length)    
   return (
     <>
     <TitleBar />
     <hr />
     <SearchCountries  onSearchChange={searchFieldHandler}/>
-    <CountryCards countries={fetchCountries}/>
+    <CountryCards countries={data}/>
     </>
   )
 }

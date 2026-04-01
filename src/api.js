@@ -1,39 +1,23 @@
-import {useEffect} from 'react'
+import {useState,useEffect} from 'react'
 
-export function useFetchCountries(setFetchCountries) {
+export function useFetchCountries(url)  {
+    const [data, setData] = useState([])
     useEffect(()=> {
-        async function fetchCountries(setFetchCountries) {
+        async function fetchCountries(url) {
         try {
-            const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,language')
+            const resp = await fetch(url)
             if (!resp.ok) {
                 throw new Error("response failed")
             }
             const jsonData = await resp.json();
-            // console.log(jsonData);
-            setFetchCountries(jsonData);
+            console.log(jsonData);
+            setData(jsonData);
         } catch(err) {
             console.error("Fetch error: ", err)
         }
     }
-        fetchCountries(setFetchCountries)
-    }, [])
-}
+        fetchCountries(url)
+    }, [url])
 
-
-export function useFetchCountry(tgtCountry, setFetchCountries){
-    useEffect(()=>{
-        async function fetchCountry(tgtCountry, setFetchCountries){
-            try {
-                const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages`);
-                if (!resp.ok) {
-                    throw new Error("response failed");
-                }
-                const jsonData = await resp.json();
-                setFetchCountries(jsonData)
-            } catch(err) {
-                console.error("Fetch error: ", err)
-            }
-        }
-        fetchCountry(tgtCountry, setFetchCountries)
-    },[])
+    return {data}
 }
