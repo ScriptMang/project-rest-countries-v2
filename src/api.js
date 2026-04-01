@@ -18,3 +18,22 @@ export function useFetchCountries(setFetchCountries) {
         fetchCountries(setFetchCountries)
     }, [])
 }
+
+
+export function useFetchCountry(searchVal, setFetchCountries){
+    useEffect(()=>{
+        async function fetchCountry(tgtCountry, setFetchCountries){
+            try {
+                const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages`);
+                if (!resp.ok) {
+                    throw new Error("response failed");
+                }
+                const jsonData = await resp.json();
+                setFetchCountries(jsonData)
+            } catch(err) {
+                console.error("Fetch error: ", err)
+            }
+        }
+        fetchCountry(tgtCountry, setFetchCountries)
+    },[])
+}
