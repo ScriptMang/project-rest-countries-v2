@@ -20,7 +20,7 @@ export function useFetchCountries(setFetchCountries) {
 }
 
 
-export function useFetchCountry(searchVal, setFetchCountries){
+export function useFetchCountry(tgtCountry, setFetchCountries){
     useEffect(()=>{
         async function fetchCountry(tgtCountry, setFetchCountries){
             try {
